@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="com">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../com.tinkerforge/lib/Tinkerforge.jar!/" />
+      <root url="file://$PROJECT_DIR$/../ch.quantasy.tinkerforge.tinker/classes/production/ch.quantasy.tinkerforge.tinker" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

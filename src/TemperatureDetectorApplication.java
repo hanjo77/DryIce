@@ -1,15 +1,13 @@
-import java.util.HashMap;
-import java.util.Map;
-
 import ch.quantasy.tinkerforge.tinker.agent.implementation.TinkerforgeStackAgent;
 import ch.quantasy.tinkerforge.tinker.application.implementation.AbstractTinkerforgeApplication;
-import ch.quantasy.tinkerforge.tinker.core.implementation.TinkerforgeDevice;
-
 import com.tinkerforge.BrickletTemperatureIR;
 import com.tinkerforge.BrickletTemperatureIR.ObjectTemperatureListener;
 import com.tinkerforge.Device;
 import com.tinkerforge.NotConnectedException;
 import com.tinkerforge.TimeoutException;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class TemperatureDetectorApplication extends AbstractTinkerforgeApplication {
 	private final Map<Device, ObjectTemperatureListener> listenerMap;

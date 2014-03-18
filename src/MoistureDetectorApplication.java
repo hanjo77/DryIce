@@ -1,18 +1,13 @@
-
-
-import java.util.HashMap;
-import java.util.Map;
-
 import ch.quantasy.tinkerforge.tinker.agent.implementation.TinkerforgeStackAgent;
 import ch.quantasy.tinkerforge.tinker.application.implementation.AbstractTinkerforgeApplication;
-import ch.quantasy.tinkerforge.tinker.core.implementation.TinkerforgeDevice;
-
 import com.tinkerforge.BrickletMoisture;
 import com.tinkerforge.BrickletMoisture.MoistureListener;
-import com.tinkerforge.BrickletMotionDetector.DetectionCycleEndedListener;
 import com.tinkerforge.Device;
 import com.tinkerforge.NotConnectedException;
 import com.tinkerforge.TimeoutException;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MoistureDetectorApplication extends AbstractTinkerforgeApplication {
 	private final Map<Device, MoistureListener> listenerMap;
@@ -31,7 +26,7 @@ public class MoistureDetectorApplication extends AbstractTinkerforgeApplication 
 	}
 
 	@Override
-	public void deviceConnected(final TinkerforgeStackAgent satckAgent,
+	public void deviceConnected(final TinkerforgeStackAgent stackAgent,
 			final Device device) {
 		if (device instanceof BrickletMoisture) {
 			this.moistureDetectionConnect((BrickletMoisture) device);
@@ -44,7 +39,7 @@ public class MoistureDetectorApplication extends AbstractTinkerforgeApplication 
 				.get(moistureDetector);
 		if (listener != null) {
 			moistureDetector.removeMoistureListener(listener);
-
+            DryIceWriter.getInstance().closeWriter();
 			this.listenerMap.remove(moistureDetector);
 		}
 
@@ -67,7 +62,7 @@ public class MoistureDetectorApplication extends AbstractTinkerforgeApplication 
 		public DryIceMoistureListener(final BrickletMoisture device) {
 			this.device = device;
 			try {
-				this.device.setMoistureCallbackPeriod(1000);
+				this.device.setMoistureCallbackPeriod(5000);
 			} catch (TimeoutException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

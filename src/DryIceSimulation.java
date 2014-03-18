@@ -1,12 +1,9 @@
-
-
-import java.io.IOException;
-
 import ch.quantasy.tinkerforge.tinker.agency.implementation.TinkerforgeStackAgency;
 import ch.quantasy.tinkerforge.tinker.agent.implementation.TinkerforgeStackAgentIdentifier;
 import ch.quantasy.tinkerforge.tinker.application.definition.TinkerforgeApplication;
-
 import com.tinkerforge.Device;
+
+import java.io.IOException;
 
 /**
  * This example demonstrates that the designer of a tinkerforge setting is

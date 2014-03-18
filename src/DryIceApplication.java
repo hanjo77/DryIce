@@ -1,13 +1,11 @@
-
-
 import ch.quantasy.tinkerforge.tinker.agent.implementation.TinkerforgeStackAgent;
 import ch.quantasy.tinkerforge.tinker.application.implementation.AbstractTinkerforgeApplication;
-
 import com.tinkerforge.BrickMaster;
-import com.tinkerforge.BrickletMoisture;
 import com.tinkerforge.Device;
 import com.tinkerforge.NotConnectedException;
 import com.tinkerforge.TimeoutException;
+
+
 
 public class DryIceApplication extends AbstractTinkerforgeApplication {
 	private final MasterBrickApplication masterBrickApplication;

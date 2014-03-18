@@ -1,10 +1,4 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.StringReader;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -12,14 +6,16 @@ import java.util.Calendar;
 public class DryIceWriter {
 
 	private static DryIceWriter instance;
+	final String fileName = "moisture-results.csv";
 	private float temperature;
 	private int moisture;
 	private File outputFile;
-	final String fileName = "moisture-results.csv";
+    private BufferedWriter bufferedWriter;
 	
 	public static DryIceWriter getInstance() {
 		if (instance == null) {
 			instance = new DryIceWriter();
+
 			instance.createFile();
 	 	}
 		return instance;
@@ -27,6 +23,11 @@ public class DryIceWriter {
 	
 	private void createFile() {
         outputFile = new File(fileName);
+        try {
+            bufferedWriter = new BufferedWriter(new FileWriter(fileName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         writeToFile("Time;Moisture;temperature\n");
 	}
 
@@ -45,6 +46,14 @@ public class DryIceWriter {
 	public void setMoisture(int moisture) {
 		this.moisture = moisture;
 	}
+
+    public void closeWriter(){
+        try {
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 	
 	public void printValues() {
 		System.out.println("Moisture; " + this.moisture + " | Temperature: " + this.temperature);
@@ -54,16 +63,10 @@ public class DryIceWriter {
  	}
 	
 	private void writeToFile(String data) {
-        String line = "";
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
-            while( ( line = bufferedReader.readLine() ) != null ) {
-                bufferedWriter.write(line);
-            }
+
             bufferedWriter.write(data);
-            bufferedReader.close();
-            bufferedWriter.close();
+
         } catch (IOException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();

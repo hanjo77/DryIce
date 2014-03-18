@@ -1,12 +1,5 @@
-
-
-import java.util.HashMap;
-import java.util.Map;
-
 import ch.quantasy.tinkerforge.tinker.agent.implementation.TinkerforgeStackAgent;
 import ch.quantasy.tinkerforge.tinker.application.implementation.AbstractTinkerforgeApplication;
-import ch.quantasy.tinkerforge.tinker.core.implementation.TinkerforgeDevice;
-
 import com.tinkerforge.BrickMaster;
 import com.tinkerforge.BrickMaster.StackCurrentListener;
 import com.tinkerforge.BrickMaster.StackVoltageListener;
@@ -14,6 +7,9 @@ import com.tinkerforge.BrickMaster.USBVoltageListener;
 import com.tinkerforge.Device;
 import com.tinkerforge.NotConnectedException;
 import com.tinkerforge.TimeoutException;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MasterBrickApplication extends AbstractTinkerforgeApplication {
 	private final Map<Device, MasterListener> listenerMap;
