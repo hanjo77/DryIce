@@ -9,7 +9,6 @@ public class DryIceWriter {
 	final String fileName = "moisture-results.csv";
 	private float temperature;
 	private int moisture;
-	private File outputFile;
     private BufferedWriter bufferedWriter;
 	
 	public static DryIceWriter getInstance() {
@@ -22,7 +21,6 @@ public class DryIceWriter {
 	}
 	
 	private void createFile() {
-        outputFile = new File(fileName);
         try {
             bufferedWriter = new BufferedWriter(new FileWriter(fileName));
         } catch (IOException e) {
